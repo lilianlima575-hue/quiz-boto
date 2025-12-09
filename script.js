@@ -51,14 +51,12 @@ function loadQuestion() {
     const currentQuestion = quiz[currentQuestionIndex];
     questionElement.textContent = currentQuestion.question;
 
-    // Cria os botões dinamicamente
     currentQuestion.options.forEach((optionText, index) => {
         const button = document.createElement('button');
         button.textContent = optionText;
         button.classList.add('option-button');
         button.id = 'option-' + index; 
         
-        // Ativa a verificação de resposta ao clicar
         button.onclick = () => checkAnswer(index, currentQuestion.answer);
         
         optionsContainer.appendChild(button);
@@ -82,7 +80,6 @@ function checkAnswer(selectedIndex, correctAnswerIndex) {
         document.getElementById('option-' + correctAnswerIndex).classList.add('correct');
     }
 
-    // Avança após 2 segundos
     setTimeout(() => {
         currentQuestionIndex++;
         loadQuestion();
@@ -107,5 +104,4 @@ function restartQuiz() {
     loadQuestion();
 }
 
-// Inicia o quiz assim que a página é carregada
 document.addEventListener('DOMContentLoaded', loadQuestion);
