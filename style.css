@@ -2,58 +2,61 @@ style.css
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(#ff9acb, #ff69b4);
+    background: linear-gradient(#cde7ff, #ffe0f0);
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+}
+
+.sub {
+    margin-top: -10px;
+    font-size: 1.1em;
+    color: #444;
+}
+
+.sobre, .opcoes {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px #0002;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.botao {
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1.3em;
+    font-weight: bold;
     color: white;
     text-align: center;
+    transition: 0.3s;
 }
 
-.container {
+.rosa { background: #ff6fa5; }
+.azul { background: #4da7ff; }
+
+.botao:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
     padding: 20px;
-}
-
-.menu button {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    padding: 15px;
-    font-size: 18px;
-    background: white;
-    color: #ff2f91;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-.menu button:hover {
-    background: #ffe0f0;
-}
-
-.hidden {
-    display: none;
-}
-
-#answers button {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    padding: 12px;
-    background: #ffffff;
-    border: none;
-    border-radius: 10px;
-    color: #ff2f91;
-    cursor: pointer;
-}
-
-#answers button:hover {
-    background: #ffe0f0;
-}
-
-#nextBtn {
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: #fff;
-    color: #ff2f91;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-}
+    opacity: 0.7;
