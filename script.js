@@ -1,10 +1,9 @@
-// --- 1. A Lista de Perguntas (Conteúdo Científico Mantido) ---
+// --- 1. A Lista de Perguntas CIENTÍFICAS ---
 const quiz = [
     {
         question: "Qual característica morfológica confere ao Boto Cor-de-Rosa maior capacidade de caça em ambientes de igapó?",
         options: ["Sua barbatana dorsal triangular", "Suas vértebras cervicais livres"],
         answer: 1, 
-        // A explicação foi removida do objeto
     },
     {
         question: "Qual dos botos é geneticamente mais próximo dos golfinhos oceânicos (família Delphinidae)?",
@@ -58,14 +57,13 @@ function loadQuestion() {
         button.classList.add('option-button');
         button.id = 'option-' + index; 
         
-        // A função checkAnswer agora só precisa do índice da resposta
         button.onclick = () => checkAnswer(index, currentQuestion.answer); 
         
         optionsContainer.appendChild(button);
     });
 }
 
-// --- 5. FUNÇÃO: Verificar a Resposta (SIMPLIFICADA) ---
+// --- 5. FUNÇÃO: Verificar a Resposta ---
 function checkAnswer(selectedIndex, correctAnswerIndex) {
     if (answered) return; 
     answered = true;
@@ -84,10 +82,10 @@ function checkAnswer(selectedIndex, correctAnswerIndex) {
         document.getElementById('option-' + correctAnswerIndex).classList.add('correct');
     }
 
-    // Exibe apenas a mensagem de Correto/Errado
+    // Exibe apenas a mensagem de Correto/Errado no placar
     resultElement.innerHTML = `<p><strong>${resultMessage}</strong></p>`;
 
-    // Avança mais rápido, já que não há texto para ler
+    // Avança para a próxima pergunta após 2 segundos
     setTimeout(() => {
         currentQuestionIndex++;
         loadQuestion();
