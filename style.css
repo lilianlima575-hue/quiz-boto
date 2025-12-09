@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
 
-/* --- ESQUEMA DE CORES: AZUL ESCURO E CLARO --- */
+/* --- ESQUEMA DE CORES: AZUL ESCURO E CLARO (PROFISSIONAL) --- */
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f4f7; 
+    background-color: #f0f4f7; /* Fundo Cinza/Azul Claro */
     color: #1a1a2e;
     margin: 0;
     padding: 0;
@@ -16,17 +16,18 @@ body {
     align-items: center;
 }
 
+/* HEADER - Cabeçalho do Site */
 header {
     width: 100%;
     background-color: #1a237e; /* Azul Índigo Escuro */
     color: #ffffff;
-    padding: 20px 0; /* Menos padding para dar espaço à navegação */
+    padding: 20px 0; 
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
     font-family: 'Dosis', sans-serif;
-    font-size: 2.5em; /* Título menor para site profissional */
+    font-size: 2.5em; 
     font-weight: 700;
     margin-bottom: 10px;
 }
@@ -37,7 +38,7 @@ header p {
     margin-top: 0;
 }
 
-/* --- BARRA DE NAVEGAÇÃO HORIZONTAL (NAV) --- */
+/* BARRA DE NAVEGAÇÃO HORIZONTAL (NAV) */
 nav {
     width: 100%;
     background-color: #3949ab; /* Azul Médio */
@@ -50,7 +51,7 @@ nav {
     margin: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Permite quebrar em telas pequenas */
+    flex-wrap: wrap;
 }
 
 .nav-links li a {
@@ -66,8 +67,7 @@ nav {
     background-color: #1a237e; /* Azul Escuro no Hover */
 }
 
-
-/* --- ESTILO GERAL E CARDS --- */
+/* --- ESTILO GERAL DOS CARDS (Menu, Estudo, Quiz) --- */
 
 .game-menu, .quiz-container, .study-container {
     max-width: 800px;
@@ -82,7 +82,7 @@ nav {
     text-align: left;
 }
 
-/* Mantendo o menu da tela inicial compacto */
+/* ESTILO DO MENU COMPACTO (HOME) */
 .game-menu {
     max-width: 500px; 
     margin-top: 100px; 
@@ -92,15 +92,15 @@ nav {
 
 .menu-title, .study-title {
     font-family: 'Dosis', sans-serif;
-    font-size: 1.8em; /* Reduzido para o menu compacto */
-    color: #3949ab;
+    font-size: 1.8em; 
+    color: #3949ab; 
     margin-bottom: 30px;
     text-align: center;
     border-bottom: 2px solid #e0e0e0;
     padding-bottom: 15px;
 }
 
-/* Links/Botões de Ação */
+/* Links/Botões de Ação (Temas e Opções) */
 .game-link, .option-button, #start-quiz-btn, #start-study-btn {
     display: block;
     width: 100%;
@@ -126,7 +126,7 @@ nav {
 
 /* Estilo para Leitura (Estudo) */
 .study-content {
-    text-align: justify; /* Melhora a leitura de blocos grandes de texto */
+    text-align: justify; 
 }
 .study-content h3 {
     font-family: 'Dosis', sans-serif;
@@ -142,7 +142,7 @@ nav {
     margin-bottom: 25px;
 }
 
-/* Estilo do Placar Fixo e Quiz (mantidos) */
+/* Estilo do Placar Fixo e Quiz (Cores de feedback) */
 #game-status {
     padding: 10px 15px;
     border: 2px solid #64b5f6;
@@ -155,7 +155,7 @@ nav {
 .correct { background-color: #43a047 !important; color: white !important; }
 .wrong { background-color: #e53935 !important; color: white !important; }
 
-/* Rodapé (Footer) */
+/* Rodapé (Footer) - Estilo Profissional */
 footer {
     width: 100%;
     background-color: #1a237e; 
