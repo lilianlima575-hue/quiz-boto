@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
 
-/* --- ESQUEMA DE CORES: AZUL ESCURO E CLARO (PROFISSIONAL) --- */
+/* --- ESQUEMA DE CORES: AZUL ESCURO E CLARO --- */
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -16,30 +16,48 @@ body {
     align-items: center;
 }
 
-/* HEADER - TÍTULO PEQUENO E FUNDO AZUL COMPACTO */
+/* HEADER - Fundo Azul Pequeno e Título Compacto */
 header {
     width: 100%;
     background-color: #1a237e; /* Azul Índigo Escuro */
     color: #ffffff;
-    padding: 10px 20px; /* Padding reduzido para fundo pequeno */
+    padding: 10px 20px; /* Fundo Azul Pequeno */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex; /* Flexbox para organizar logo e navegação */
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 header .logo {
     font-family: 'Dosis', sans-serif;
-    font-size: 1.5em; /* Título bem menor */
+    font-size: 1.5em; /* Título pequeno */
     font-weight: 700;
     margin: 0;
     color: #ffffff;
+    text-decoration: none;
 }
 header p {
-    display: none; /* Esconde a tagline no cabeçalho compacto */
+    display: none;
 }
 
-/* --- BARRA DE NAVEGAÇÃO HORIZONTAL (GRANDES TELAS) --- */
+/* --- MENU RESPONSIVO (HAMBÚRGUER e BARRA) --- */
+
+/* Esconde o menu hambúrguer por padrão em telas grandes */
+.menu-toggle {
+    display: none; 
+    cursor: pointer;
+    padding: 5px;
+}
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Barra de Navegação Horizontal (Desktop) */
 nav {
     width: 100%;
     background-color: #3949ab; 
@@ -58,7 +76,7 @@ nav {
     display: block;
     color: white;
     text-decoration: none;
-    padding: 12px 15px; /* Padding reduzido */
+    padding: 12px 15px; 
     font-weight: 500;
     transition: background-color 0.3s;
 }
@@ -67,40 +85,43 @@ nav {
     background-color: #1a237e;
 }
 
-/* --- MENU HAMBÚRGUER (APENAS ESTILO VISUAL) --- */
-.menu-toggle {
-    display: none; /* Esconde o botão hambúrguer em telas grandes */
-    cursor: pointer;
-    padding: 5px;
-}
 
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: #ffffff;
-    transition: all 0.3s ease-in-out;
-}
-
-/* CONFIGURAÇÃO PARA TELAS PEQUENAS (ONDE O HAMBÚRGUER APARECE) */
+/* --- Configuração para Telas Pequenas (Mobile) --- */
 @media (max-width: 768px) {
-    /* Mostra o hambúrguer no cabeçalho */
+    /* Mostra o ícone Hambúrguer e esconde a barra horizontal */
     .menu-toggle {
         display: block; 
     }
-    
-    /* Esconde a barra de navegação principal (usaria JS para mostrar/esconder) */
     nav {
         display: none; 
+        width: 100%;
+        position: absolute;
+        top: 45px; /* Abaixo do cabeçalho */
+        left: 0;
+        z-index: 10;
+        background-color: #3949ab;
     }
-
-    /* Caso queira que o menu hambúrguer substitua a barra horizontal */
-    /* Você precisaria de JavaScript para implementar a funcionalidade completa */
+    
+    /* Configuração do menu quando ATIVO (Precisa de JS, mas definimos o estilo) */
+    nav.active {
+        display: block; 
+    }
+    .nav-links {
+        flex-direction: column; /* Links verticais no mobile */
+        align-items: flex-start;
+        padding: 10px 0;
+    }
+    .nav-links li {
+        width: 100%;
+    }
+    .nav-links li a {
+        padding: 10px 20px;
+        text-align: left;
+    }
 }
 
 
-/* --- ESTILO GERAL DOS CARDS (Menu, Estudo, Quiz) --- */
+/* --- ESTILOS DOS CARDS E BOTÕES (Minimalistas) --- */
 
 .game-menu, .quiz-container, .study-container {
     max-width: 800px;
@@ -132,7 +153,6 @@ nav {
     padding-bottom: 15px;
 }
 
-/* Links/Botões de Ação */
 .game-link, .option-button, #start-quiz-btn, #start-study-btn {
     display: block;
     width: 100%;
@@ -156,19 +176,11 @@ nav {
     border-color: #42a5f5;
 }
 
-/* Estilo de Leitura/Quiz/Rodapé (mantidos) */
+/* Estilos de Leitura/Rodapé (Mantidos) */
 .study-content { text-align: justify; }
 .study-content h3 { border-left: 5px solid #64b5f6; padding-left: 15px; }
-
-#game-status {
-    padding: 10px 15px;
-    border: 2px solid #64b5f6;
-    background-color: #e3f2fd;
-    color: #1a237e;
-}
 .correct { background-color: #43a047 !important; color: white !important; }
 .wrong { background-color: #e53935 !important; color: white !important; }
-
 footer {
     width: 100%;
     background-color: #1a237e; 
