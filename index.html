@@ -1,31 +1,31 @@
-<!DOCTYPE html>
+index.html<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz dos Botos</title>
+    <title>Escolha seu Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <main class="container">
 
-    <h1 class="titulo">🐬 Quiz dos Botos 🐬</h1>
+        <h1>Escolha um Quiz</h1>
 
-    <!-- MENU INICIAL -->
-    <div id="menu">
-        <h2>Escolha o Quiz</h2>
-        <button class="btn-menu" onclick="startQuiz('rosa')">💗 Boto-Cor-de-Rosa</button>
-        <button class="btn-menu" onclick="startQuiz('tucuxi')">💙 Boto Tucuxi</button>
-    </div>
+        <div class="menu">
+            <button onclick="startQuiz('boto')">🐬 Quiz do Boto-Cor-de-Rosa</button>
+            <button onclick="startQuiz('tucuxi')">🐳 Quiz do Tucuxi</button>
+        </div>
 
-    <!-- ÁREA DO QUIZ -->
-    <div id="quiz-container" class="hidden">
-        <h2 id="quiz-title"></h2>
-        <p id="question"></p>
+        <div id="quiz-area" class="hidden">
+            <h2 id="quiz-title"></h2>
+            <p id="question"></p>
 
-        <div id="options"></div>
+            <div id="answers"></div>
 
-        <button id="next-btn" onclick="nextQuestion()">Próxima</button>
-    </div>
+            <button id="nextBtn" class="hidden" onclick="nextQuestion()">Próxima</button>
+        </div>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
