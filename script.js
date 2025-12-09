@@ -1,113 +1,90 @@
-// PERGUNTAS DO BOTO-COR-DE-ROSA
-const botoRosa = [
-    {
-        q: "Onde vive o boto-cor-de-rosa?",
-        a: ["Amazônia", "Mar Mediterrâneo", "África"],
-        c: 0
+script.js
+let currentQuiz = "";
+let currentQuestion = 0;
+
+const quizzes = {
+    boto: {
+        title: "Quiz do Boto-Cor-de-Rosa",
+        questions: [
+            {
+                q: "Onde vive o boto-cor-de-rosa?",
+                answers: ["Amazônia", "África", "Europa"],
+                correct: 0
+            },
+            {
+                q: "O boto é um...",
+                answers: ["Peixe", "Mamífero", "Réptil"],
+                correct: 1
+            }
+        ]
     },
-    {
-        q: "O boto-cor-de-rosa é um:",
-        a: ["Peixe", "Mamífero", "Réptil"],
-        c: 1
-    },
-    {
-        q: "Por que o boto fica rosa?",
-        a: ["Por causa dos vasos sanguíneos", "Por comer camarão rosa", "Por viver no mar"],
-        c: 0
-    },
-    {
-        q: "Os filhotes de boto-cor-de-rosa nascem:",
-        a: ["Cinza", "Rosa", "Azul"],
-        c: 1
-    },
-    {
-        q: "O boto-cor-de-rosa está:",
-        a: ["Em perigo de extinção", "Totalmente seguro", "Extinto"],
-        c: 0
+
+    tucuxi: {
+        title: "Quiz do Tucuxi",
+        questions: [
+            {
+                q: "O tucuxi também vive na...",
+                answers: ["Amazônia", "Groenlândia", "Ásia"],
+                correct: 0
+            },
+            {
+                q: "O tucuxi é parecido com...",
+                answers: ["Golfinho marinho", "Tubarão", "Tartaruga"],
+                correct: 0
+            }
+        ]
     }
-];
+};
 
-// PERGUNTAS DO BOTO TUCUXI
-const botoTucuxi = [
-    {
-        q: "O boto Tucuxi vive em qual região?",
-        a: ["Amazônia", "Europa", "Oceano Índico"],
-        c: 0
-    },
-    {
-        q: "O Tucuxi é conhecido como:",
-        a: ["Boto-do-mar", "Golfinho-cinza-da-Amazônia", "Golfinho-azul"],
-        c: 1
-    },
-    {
-        q: "O Tucuxi é:",
-        a: ["Mamífero", "Anfíbio", "Peixe"],
-        c: 0
-    },
-    {
-        q: "O Tucuxi costuma viver:",
-        a: ["Sozinho ou em pequenos grupos", "Sempre em bandos de 100", "Preso em cavernas"],
-        c: 0
-    },
-    {
-        q: "A maior ameaça ao Tucuxi é:",
-        a: ["Poluição e redes de pesca", "Baixa temperatura", "Falta de alimento"],
-        c: 0
-    }
-];
 
-let quizAtual = [];
-let index = 0;
+function startQuiz(type) {
+    currentQuiz = type;
+    currentQuestion = 0;
 
-// Escolher qual quiz vai abrir
-function startQuiz(tipo) {
-    document.getElementById("menu").classList.add("hidden");
-    document.getElementById("quiz-container").classList.remove("hidden");
+    document.querySelector(".menu").classList.add("hidden");
+    document.querySelector("#quiz-area").classList.remove("hidden");
 
-    if (tipo === "rosa") {
-        quizAtual = botoRosa;
-        document.getElementById("quiz-title").innerText = "💗 Quiz: Boto-Cor-de-Rosa";
-    } else {
-        quizAtual = botoTucuxi;
-        document.getElementById("quiz-title").innerText = "💙 Quiz: Boto Tucuxi";
-    }
+    document.getElementById("quiz-title").innerText = quizzes[type].title;
 
-    index = 0;
     loadQuestion();
 }
 
-// Carregar pergunta
 function loadQuestion() {
-    const q = quizAtual[index];
+    const q = quizzes[currentQuiz].questions[currentQuestion];
+
     document.getElementById("question").innerText = q.q;
 
-    const optDiv = document.getElementById("options");
-    optDiv.innerHTML = "";
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
 
-    q.a.forEach((op, i) => {
-        const btn = document.createElement("button");
-        btn.innerText = op;
-        btn.onclick = () => checkAnswer(i);
-        optDiv.appendChild(btn);
+    q.answers.forEach((ans, i) => {
+        answersDiv.innerHTML += `
+            <button onclick="checkAnswer(${i})">${ans}</button>
+        `;
     });
+
+    document.getElementById("nextBtn").classList.add("hidden");
 }
 
-// Verificar resposta
 function checkAnswer(i) {
-    if (i === quizAtual[index].c) {
-        alert("Acertou! 🐬✨");
+    const correct = quizzes[currentQuiz].questions[currentQuestion].correct;
+
+    if (i === correct) {
+        alert("✔️ Acertou!");
     } else {
-        alert("Errou! 😅");
+        alert("❌ Errou!");
     }
+
+    document.getElementById("nextBtn").classList.remove("hidden");
 }
 
-// Próxima pergunta
 function nextQuestion() {
-    index++;
-    if (index >= quizAtual.length) {
-        alert("Fim do quiz! 🎉");
-        location.reload(); // Volta ao menu
-        return;
+    currentQuestion++;
+
+    if (currentQuestion >= quizzes[currentQuiz].questions.length) {
+        alert("🎉 Quiz concluído!");
+        location.reload();
+    } else {
+        loadQuestion();
     }
-    loadQuestion();
 }
