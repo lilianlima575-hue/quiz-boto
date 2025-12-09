@@ -4,7 +4,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f4f7; /* Fundo Cinza/Azul Claro */
+    background-color: #f0f4f7;
     color: #1a1a2e;
     margin: 0;
     padding: 0;
@@ -16,33 +16,34 @@ body {
     align-items: center;
 }
 
-/* HEADER - Cabeçalho do Site */
+/* HEADER - TÍTULO PEQUENO E FUNDO AZUL COMPACTO */
 header {
     width: 100%;
     background-color: #1a237e; /* Azul Índigo Escuro */
     color: #ffffff;
-    padding: 20px 0; 
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    padding: 10px 20px; /* Padding reduzido para fundo pequeno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Flexbox para organizar logo e navegação */
+    justify-content: space-between;
+    align-items: center;
 }
 
-header h1 {
+header .logo {
     font-family: 'Dosis', sans-serif;
-    font-size: 2.5em; 
+    font-size: 1.5em; /* Título bem menor */
     font-weight: 700;
-    margin-bottom: 10px;
+    margin: 0;
+    color: #ffffff;
 }
-
 header p {
-    color: #bbdefb;
-    font-weight: 300;
-    margin-top: 0;
+    display: none; /* Esconde a tagline no cabeçalho compacto */
 }
 
-/* BARRA DE NAVEGAÇÃO HORIZONTAL (NAV) */
+/* --- BARRA DE NAVEGAÇÃO HORIZONTAL (GRANDES TELAS) --- */
 nav {
     width: 100%;
-    background-color: #3949ab; /* Azul Médio */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #3949ab; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
@@ -51,21 +52,53 @@ nav {
     margin: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .nav-links li a {
     display: block;
     color: white;
     text-decoration: none;
-    padding: 15px 20px;
-    font-weight: 600;
+    padding: 12px 15px; /* Padding reduzido */
+    font-weight: 500;
     transition: background-color 0.3s;
 }
 
 .nav-links li a:hover {
-    background-color: #1a237e; /* Azul Escuro no Hover */
+    background-color: #1a237e;
 }
+
+/* --- MENU HAMBÚRGUER (APENAS ESTILO VISUAL) --- */
+.menu-toggle {
+    display: none; /* Esconde o botão hambúrguer em telas grandes */
+    cursor: pointer;
+    padding: 5px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* CONFIGURAÇÃO PARA TELAS PEQUENAS (ONDE O HAMBÚRGUER APARECE) */
+@media (max-width: 768px) {
+    /* Mostra o hambúrguer no cabeçalho */
+    .menu-toggle {
+        display: block; 
+    }
+    
+    /* Esconde a barra de navegação principal (usaria JS para mostrar/esconder) */
+    nav {
+        display: none; 
+    }
+
+    /* Caso queira que o menu hambúrguer substitua a barra horizontal */
+    /* Você precisaria de JavaScript para implementar a funcionalidade completa */
+}
+
 
 /* --- ESTILO GERAL DOS CARDS (Menu, Estudo, Quiz) --- */
 
@@ -82,7 +115,6 @@ nav {
     text-align: left;
 }
 
-/* ESTILO DO MENU COMPACTO (HOME) */
 .game-menu {
     max-width: 500px; 
     margin-top: 100px; 
@@ -100,7 +132,7 @@ nav {
     padding-bottom: 15px;
 }
 
-/* Links/Botões de Ação (Temas e Opções) */
+/* Links/Botões de Ação */
 .game-link, .option-button, #start-quiz-btn, #start-study-btn {
     display: block;
     width: 100%;
@@ -124,47 +156,23 @@ nav {
     border-color: #42a5f5;
 }
 
-/* Estilo para Leitura (Estudo) */
-.study-content {
-    text-align: justify; 
-}
-.study-content h3 {
-    font-family: 'Dosis', sans-serif;
-    color: #1a237e;
-    margin-top: 30px;
-    font-size: 1.6em;
-    border-left: 5px solid #64b5f6;
-    padding-left: 15px;
-}
-.study-content p {
-    font-size: 1.1em;
-    line-height: 1.8;
-    margin-bottom: 25px;
-}
+/* Estilo de Leitura/Quiz/Rodapé (mantidos) */
+.study-content { text-align: justify; }
+.study-content h3 { border-left: 5px solid #64b5f6; padding-left: 15px; }
 
-/* Estilo do Placar Fixo e Quiz (Cores de feedback) */
 #game-status {
     padding: 10px 15px;
     border: 2px solid #64b5f6;
-    border-radius: 8px;
     background-color: #e3f2fd;
     color: #1a237e;
-    font-weight: 700;
-    font-size: 1.1em;
 }
 .correct { background-color: #43a047 !important; color: white !important; }
 .wrong { background-color: #e53935 !important; color: white !important; }
 
-/* Rodapé (Footer) - Estilo Profissional */
 footer {
     width: 100%;
     background-color: #1a237e; 
     color: #ffffff;
     padding: 20px 0;
     margin-top: auto; 
-    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
-    font-size: 0.9em;
-}
-footer p {
-    margin: 5px 0;
 }
