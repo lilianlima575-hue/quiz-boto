@@ -1,47 +1,44 @@
-// --- 1. A Lista de Perguntas COM EXPLICAÇÕES CIENTÍFICAS ---
+// --- 1. A Lista de Perguntas (Conteúdo Científico Mantido) ---
 const quiz = [
     {
         question: "Qual característica morfológica confere ao Boto Cor-de-Rosa maior capacidade de caça em ambientes de igapó?",
         options: ["Sua barbatana dorsal triangular", "Suas vértebras cervicais livres"],
         answer: 1, 
-        explanation: "A ausência de fusão nas vértebras cervicais (livres) permite ao Boto Cor-de-Rosa alta flexibilidade cervical, essencial para manobrar e caçar em habitats complexos (igapós e áreas alagadas)."
+        // A explicação foi removida do objeto
     },
     {
         question: "Qual dos botos é geneticamente mais próximo dos golfinhos oceânicos (família Delphinidae)?",
         options: ["O Boto Cor-de-Rosa (Inia)", "O Boto Tucuxi (Sotalia)"],
         answer: 1, 
-        explanation: "O Tucuxi (Sotalia fluviatilis) é classificado na família Delphinidae, indicando uma adaptação mais recente ao ambiente fluvial. O Boto Cor-de-Rosa pertence a uma família mais antiga (Iniidae)."
     },
     {
         question: "A principal ameaça antrópica que afeta a saúde dos botos devido à degradação do habitat é:",
         options: ["Ataques de predadores naturais como onças", "Contaminação por mercúrio e fragmentação do habitat"],
         answer: 1, 
-        explanation: "A contaminação por mercúrio (garimpo) e a fragmentação do habitat por barragens são as principais ameaças de origem humana (antrópica) que impactam a sobrevivência de ambas as espécies."
     },
     {
         question: "Qual é a estrutura morfológica da nadadeira dorsal do Boto Tucuxi?",
         options: ["Uma crista dorsal baixa", "Uma barbatana dorsal triangular e definida"],
         answer: 1, 
-        explanation: "O Tucuxi possui uma barbatana dorsal triangular, similar a de golfinhos oceânicos, enquanto o Boto Cor-de-Rosa possui apenas uma crista baixa, uma diferença morfológica-chave."
     },
     {
         question: "Onde o Boto Cor-de-Rosa é encontrado, indicando sua distribuição endêmica?",
         options: ["Em estuários costeiros e mar aberto", "Exclusivamente nas bacias hidrográficas do Amazonas e Orinoco"],
         answer: 1, 
-        explanation: "O Boto Cor-de-Rosa é uma espécie endêmica, encontrada exclusivamente nas bacias dos rios Amazonas e Orinoco, não sobrevivendo no mar."
     }
 ];
 
-// --- 2. Funcionalidade: Variáveis e Conexão com o HTML ---
+// --- 2. Variáveis de Controle ---
 let currentQuestionIndex = 0;
 let score = 0;
 let answered = false;
 
-const questionElement = document.querySelector('#slide-3 .question');
-const optionsContainer = document.querySelector('#slide-3 .options');
+// --- 3. Conexão com o HTML ---
+const questionElement = document.querySelector('.question');
+const optionsContainer = document.querySelector('.options');
 const resultElement = document.getElementById('result'); 
 
-// --- 2. Funcionalidade: Carregar a Próxima Pergunta ---
+// --- 4. FUNÇÃO: Carregar a Próxima Pergunta ---
 function loadQuestion() {
     answered = false;
     optionsContainer.innerHTML = ''; 
@@ -61,14 +58,15 @@ function loadQuestion() {
         button.classList.add('option-button');
         button.id = 'option-' + index; 
         
-        button.onclick = () => checkAnswer(index, currentQuestion.answer, currentQuestion.explanation); 
+        // A função checkAnswer agora só precisa do índice da resposta
+        button.onclick = () => checkAnswer(index, currentQuestion.answer); 
         
         optionsContainer.appendChild(button);
     });
 }
 
-// --- 2. Funcionalidade: Verificar a Resposta ---
-function checkAnswer(selectedIndex, correctAnswerIndex, explanationText) {
+// --- 5. FUNÇÃO: Verificar a Resposta (SIMPLIFICADA) ---
+function checkAnswer(selectedIndex, correctAnswerIndex) {
     if (answered) return; 
     answered = true;
 
@@ -78,34 +76,30 @@ function checkAnswer(selectedIndex, correctAnswerIndex, explanationText) {
 
     if (selectedIndex === correctAnswerIndex) {
         score++;
-        resultMessage = '✅ Resposta Correta! +1 Ponto';
+        resultMessage = '✅ Correto!';
         selectedButton.classList.add('correct');
     } else {
-        resultMessage = '❌ Resposta Errada.';
+        resultMessage = '❌ Errado.';
         selectedButton.classList.add('wrong');
         document.getElementById('option-' + correctAnswerIndex).classList.add('correct');
     }
 
-    // Exibe a mensagem de resultado e a explicação
-    resultElement.innerHTML = `
-        <p><strong>${resultMessage}</strong></p>
-        <p class="explanation-text"><strong>Análise:</strong> ${explanationText}</p>
-    `;
+    // Exibe apenas a mensagem de Correto/Errado
+    resultElement.innerHTML = `<p><strong>${resultMessage}</strong></p>`;
 
-    // Avança após 4 segundos
+    // Avança mais rápido, já que não há texto para ler
     setTimeout(() => {
         currentQuestionIndex++;
         loadQuestion();
-    }, 4000);
+    }, 2000); 
 }
 
-// --- 2. Funcionalidade: Exibir Resultados Finais e Reiniciar ---
+// --- 6. FUNÇÃO: Exibir Resultados Finais e Reiniciar ---
 function showResults() {
-    questionElement.textContent = '🐬 Apresentação Científica Concluída! 💖';
+    questionElement.textContent = 'Quiz Concluído!';
     optionsContainer.innerHTML = '';
     resultElement.innerHTML = `
-        <p>A turma acertou: <strong>${score} de ${quiz.length}</strong>.</p>
-        <p>Obrigado por participar do Projeto Mais Ciência.</p>
+        <p>Sua pontuação final: <strong>${score} de ${quiz.length}</strong>.</p>
         <button class="option-button" onclick="restartQuiz()">Reiniciar Quiz</button>
     `;
 }
@@ -113,8 +107,5 @@ function showResults() {
 function restartQuiz() {
     currentQuestionIndex = 0;
     score = 0;
-    // Prepara o quiz para iniciar novamente pelo botão do Slide 3
-    optionsContainer.innerHTML = '<button id="start-quiz-btn" class="option-button" onclick="loadQuiz()">Iniciar Quiz Interativo</button>';
-    questionElement.textContent = 'Clique no botão abaixo para testar os conhecimentos da turma!';
-    resultElement.innerHTML = '';
+    loadQuestion();
 }
