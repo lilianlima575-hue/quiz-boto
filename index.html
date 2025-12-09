@@ -3,66 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Mais Ciência: Botos da Amazônia</title>
+    <title>Quiz Botos da Amazônia</title>
     <link rel="stylesheet" href="style.css"> 
-    
-    <style>
-        /* CSS ESPECÍFICO PARA OS SLIDES (4. Estrutura Ótima) */
-        .presentation-slide {
-            max-width: 1000px;
-            width: 95%;
-            margin: 40px auto;
-            padding: 50px;
-            background-color: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            text-align: left;
-            min-height: 80vh; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* 1. LAYOUT DE INÍCIO TOP (Foco no Slide 1) */
-        #slide-1 {
-            background-image: linear-gradient(135deg, #e0f8f3 0%, #ffffff 80%); /* Fundo mais suave e elegante */
-            border: 5px solid #1abc9c; /* Borda de destaque verde */
-            box-shadow: 0 15px 40px rgba(30, 132, 73, 0.3); /* Sombra intensa verde */
-        }
-        
-        .slide-title {
-            font-family: 'Dosis', sans-serif;
-            font-size: 4em; /* Título maior e impactante */
-            color: #1e8449; /* Verde Amazônia */
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .scholarship-note {
-            font-size: 1.8em; /* Fonte maior para o destaque da Bolsa */
-            color: #fe6860; 
-            font-weight: 600;
-            border-top: 3px solid #1abc9c;
-            padding-top: 20px;
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        /* Classes de navegação e minimalismo no quiz */
-        .quiz-active { display: none; }
-        .slide-active { display: block; }
-        #slide-3 .option-button { text-align: left; } /* 3. Minimalismo nas Questões */
-
-    </style>
 </head>
 <body>
 
     <header>
-        <h1>Projeto Mais Ciência: Botos da Amazônia</h1>
-        <p>Apresentado por: [Seu Nome]</p>
+        <h1>🐬 Quiz Botos da Amazônia 💖</h1>
+        <p>Teste seus conhecimentos sobre as espécies fluviais.</p>
     </header>
 
-    <main id="main-content">
-        <div style="text-align: center; margin-top: 20px;">
-            <button class="option-button" onclick="showSlide(1)">1. Introdução/Bolsa</button>
-            <button class="option-button" onclick="showSlide(2)">2. Explicação Científica</button>
+    <main class="quiz-container">
+        <div class="question">Clique no botão abaixo para iniciar!</div>
+        <div class="options">
+            <button id="start-quiz-btn" class="option-button" onclick="loadQuestion()">Iniciar Quiz</button>
+        </div>
+        <div id="result"></div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
