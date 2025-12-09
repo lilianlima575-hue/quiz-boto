@@ -1,4 +1,4 @@
-/* Importando fontes modernas para títulos e textos */
+/* Importando fontes modernas */
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
 
 /* Fundo Temático e Reset */
@@ -19,7 +19,7 @@ body {
 /* Cabeçalho com Gradiente Amazônia */
 header {
     width: 100%;
-    background-image: linear-gradient(135deg, #1abc9c 0%, #1e8449 100%); /* Gradiente Verde-Água */
+    background-image: linear-gradient(135deg, #1abc9c 0%, #1e8449 100%); /* Verde-Água/Amazônia */
     color: #ffffff;
     padding: 40px 20px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
@@ -40,7 +40,6 @@ header h1 {
     padding: 40px;
     background-color: #ffffff;
     border-radius: 20px;
-    /* Efeito 3D com sombra e borda de destaque */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 5px rgba(30, 132, 73, 0.1); 
     border: 1px solid #ddd;
 }
@@ -50,7 +49,7 @@ header h1 {
     font-family: 'Dosis', sans-serif;
     font-size: 1.7em;
     font-weight: 700;
-    color: #1e8449; /* Cor de Destaque */
+    color: #1e8449; 
     margin-bottom: 35px;
 }
 
@@ -70,7 +69,7 @@ header h1 {
     cursor: pointer;
     font-size: 1.1em;
     font-weight: 600;
-    transition: all 0.3s ease; /* Animação suave */
+    transition: all 0.3s ease; 
     text-align: left;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
@@ -79,25 +78,25 @@ header h1 {
     background-color: #e0f8f3; 
     color: #1e8449;
     border-color: #1e8449;
-    transform: translateY(-3px); /* Efeito de "subir" */
+    transform: translateY(-3px); 
 }
 
-/* Feedback de Cores (Adicionado pelo JS) */
+/* Feedback de Cores */
 .correct {
-    background-color: #27ae60 !important; /* Verde Sucesso */
+    background-color: #27ae60 !important; 
     color: white !important;
     border-color: #1e8449 !important;
 }
 
 .wrong {
-    background-color: #e74c3c !important; /* Vermelho Erro */
+    background-color: #e74c3c !important; 
     color: white !important;
     border-color: #c0392b !important;
 }
 
 /* Botão de Reiniciar */
 .quiz-container button[onclick="restartQuiz()"] {
-    background-color: #f39c12; /* Laranja de Ação */
+    background-color: #f39c12; 
     color: white;
     border: none;
     margin-top: 20px;
