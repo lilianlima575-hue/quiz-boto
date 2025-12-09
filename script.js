@@ -1,4 +1,4 @@
-// --- 1. A Lista de Perguntas CIENTÍFICAS ---
+// --- 1. A Lista de Perguntas (O Conteúdo do Jogo) ---
 const quiz = [
     {
         question: "Qual característica morfológica confere ao Boto Cor-de-Rosa maior capacidade de caça em ambientes de igapó?",
@@ -27,17 +27,16 @@ const quiz = [
     }
 ];
 
-// --- 2. Variáveis de Controle ---
+// --- 2. Variáveis e Conexão com o HTML ---
 let currentQuestionIndex = 0;
 let score = 0;
 let answered = false;
 
-// --- 3. Conexão com o HTML ---
 const questionElement = document.querySelector('.question');
 const optionsContainer = document.querySelector('.options');
 const resultElement = document.getElementById('result'); 
 
-// --- 4. FUNÇÃO: Carregar a Próxima Pergunta ---
+// --- 3. FUNÇÃO: Carregar a Próxima Pergunta ---
 function loadQuestion() {
     answered = false;
     optionsContainer.innerHTML = ''; 
@@ -49,7 +48,9 @@ function loadQuestion() {
     }
 
     const currentQuestion = quiz[currentQuestionIndex];
-    questionElement.textContent = currentQuestion.question;
+    
+    // Mostra o número da pergunta para dar a sensação de progresso no jogo
+    questionElement.textContent = `Pergunta ${currentQuestionIndex + 1}/${quiz.length}: ${currentQuestion.question}`;
 
     currentQuestion.options.forEach((optionText, index) => {
         const button = document.createElement('button');
@@ -61,29 +62,45 @@ function loadQuestion() {
         
         optionsContainer.appendChild(button);
     });
+    
+    // Adiciona o placar do jogo
+    updateScoreDisplay();
 }
 
-// --- 5. FUNÇÃO: Verificar a Resposta ---
+// --- 4. FUNÇÃO: Atualizar o Placar do Jogo ---
+function updateScoreDisplay() {
+     // Exibe a pontuação e o número da pergunta atual
+    const scoreMessage = `Pontos: ${score} | Jogada: ${currentQuestionIndex}/${quiz.length}`;
+    
+    // Se não houver um elemento específico para o placar, usamos o resultElement temporariamente
+    if (currentQuestionIndex < quiz.length) {
+         resultElement.innerHTML = `<p style="font-size: 1em; color: #1e8449;">${scoreMessage}</p>`;
+    }
+}
+
+
+// --- 5. FUNÇÃO: Verificar a Resposta (Feedback Imediato de Jogo) ---
 function checkAnswer(selectedIndex, correctAnswerIndex) {
     if (answered) return; 
     answered = true;
 
     const selectedButton = document.getElementById('option-' + selectedIndex);
     
-    let resultMessage = '';
+    let resultFeedback = '';
 
     if (selectedIndex === correctAnswerIndex) {
         score++;
-        resultMessage = '✅ Correto!';
+        resultFeedback = '🎉 ACERTOU! +1 Ponto!';
         selectedButton.classList.add('correct');
     } else {
-        resultMessage = '❌ Errado.';
+        resultFeedback = '😔 ERROU...';
         selectedButton.classList.add('wrong');
         document.getElementById('option-' + correctAnswerIndex).classList.add('correct');
     }
-
-    // Exibe apenas a mensagem de Correto/Errado no placar
-    resultElement.innerHTML = `<p><strong>${resultMessage}</strong></p>`;
+    
+    // Feedback de Jogo
+    resultElement.innerHTML = `<p style="font-size: 1.3em;"><strong>${resultFeedback}</strong></p>`;
+    updateScoreDisplay(); // Atualiza o placar
 
     // Avança para a próxima pergunta após 2 segundos
     setTimeout(() => {
@@ -92,13 +109,13 @@ function checkAnswer(selectedIndex, correctAnswerIndex) {
     }, 2000); 
 }
 
-// --- 6. FUNÇÃO: Exibir Resultados Finais e Reiniciar ---
+// --- 6. FUNÇÃO: Exibir Resultados Finais (Game Over) e Reiniciar ---
 function showResults() {
-    questionElement.textContent = 'Quiz Concluído!';
+    questionElement.textContent = '🏆 FIM DE JOGO! 🏆';
     optionsContainer.innerHTML = '';
     resultElement.innerHTML = `
-        <p>Sua pontuação final: <strong>${score} de ${quiz.length}</strong>.</p>
-        <button class="option-button" onclick="restartQuiz()">Reiniciar Quiz</button>
+        <p style="font-size: 1.5em; color: #fe6860;">Pontuação Final: <strong>${score} de ${quiz.length}</strong>.</p>
+        <button class="option-button" onclick="restartQuiz()">REINICIAR JOGO</button>
     `;
 }
 
@@ -107,3 +124,11 @@ function restartQuiz() {
     score = 0;
     loadQuestion();
 }
+
+// Inicia o quiz ao carregar a página (se o botão inicial não tiver sido clicado)
+document.addEventListener('DOMContentLoaded', () => {
+    // Se o botão 'Iniciar Quiz' ainda estiver visível, não faz nada (espera o clique)
+    if (!document.getElementById('start-quiz-btn')) {
+        loadQuestion();
+    }
+});
