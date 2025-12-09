@@ -4,7 +4,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f4f7; /* Cinza/Azul Claro Quase Branco */
+    background-color: #f0f4f7; 
     color: #1a1a2e;
     margin: 0;
     padding: 0;
@@ -20,16 +20,52 @@ header {
     width: 100%;
     background-color: #1a237e; /* Azul Índigo Escuro */
     color: #ffffff;
-    padding: 40px 20px;
+    padding: 20px 0; /* Menos padding para dar espaço à navegação */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
     font-family: 'Dosis', sans-serif;
-    font-size: 3em;
+    font-size: 2.5em; /* Título menor para site profissional */
     font-weight: 700;
-    letter-spacing: 2px;
+    margin-bottom: 10px;
 }
+
+header p {
+    color: #bbdefb;
+    font-weight: 300;
+    margin-top: 0;
+}
+
+/* --- BARRA DE NAVEGAÇÃO HORIZONTAL (NAV) --- */
+nav {
+    width: 100%;
+    background-color: #3949ab; /* Azul Médio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite quebrar em telas pequenas */
+}
+
+.nav-links li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.nav-links li a:hover {
+    background-color: #1a237e; /* Azul Escuro no Hover */
+}
+
 
 /* --- ESTILO GERAL E CARDS --- */
 
@@ -41,27 +77,35 @@ header h1 {
     padding: 40px;
     background-color: #ffffff;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 0 0 5px rgba(26, 35, 126, 0.05); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
     border: 1px solid #e0e0e0;
-    text-align: left; /* Alinhamento do texto para leitura */
+    text-align: left;
+}
+
+/* Mantendo o menu da tela inicial compacto */
+.game-menu {
+    max-width: 500px; 
+    margin-top: 100px; 
+    padding: 30px; 
+    text-align: center;
 }
 
 .menu-title, .study-title {
     font-family: 'Dosis', sans-serif;
-    font-size: 2.2em;
-    color: #3949ab; /* Azul Médio */
+    font-size: 1.8em; /* Reduzido para o menu compacto */
+    color: #3949ab;
     margin-bottom: 30px;
     text-align: center;
     border-bottom: 2px solid #e0e0e0;
     padding-bottom: 15px;
 }
 
-/* Links/Botões de Ação (Menu e Quiz) */
+/* Links/Botões de Ação */
 .game-link, .option-button, #start-quiz-btn, #start-study-btn {
     display: block;
     width: 100%;
-    background-color: #e3f2fd; /* Azul clarinho */
-    color: #1a237e; /* Azul Escuro */
+    background-color: #e3f2fd;
+    color: #1a237e;
     padding: 15px 20px;
     margin-bottom: 15px;
     border-radius: 8px;
@@ -74,14 +118,16 @@ header h1 {
     cursor: pointer;
 }
 .game-link:hover, .option-button:hover, #start-quiz-btn:hover, #start-study-btn:hover {
-    background-color: #64b5f6; /* Azul médio no hover */
+    background-color: #64b5f6;
     color: white;
     transform: translateY(-2px);
     border-color: #42a5f5;
 }
 
-/* --- ESTILO DE ESTUDO (TEXTO GRANDE) --- */
-
+/* Estilo para Leitura (Estudo) */
+.study-content {
+    text-align: justify; /* Melhora a leitura de blocos grandes de texto */
+}
 .study-content h3 {
     font-family: 'Dosis', sans-serif;
     color: #1a237e;
@@ -90,16 +136,13 @@ header h1 {
     border-left: 5px solid #64b5f6;
     padding-left: 15px;
 }
-
 .study-content p {
     font-size: 1.1em;
     line-height: 1.8;
     margin-bottom: 25px;
-    padding: 0 10px;
 }
 
-/* --- ESTILO DO QUIZ --- */
-
+/* Estilo do Placar Fixo e Quiz (mantidos) */
 #game-status {
     padding: 10px 15px;
     border: 2px solid #64b5f6;
@@ -107,63 +150,21 @@ header h1 {
     background-color: #e3f2fd;
     color: #1a237e;
     font-weight: 700;
-    text-align: center;
     font-size: 1.1em;
 }
-
-.question {
-    font-family: 'Dosis', sans-serif;
-    font-size: 1.6em; 
-    font-weight: 700;
-    color: #3949ab; 
-    margin-bottom: 25px; 
-    text-align: left;
-}
-
-.options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* Feedback de Cores (Funcionalidade) */
-.correct {
-    background-color: #43a047 !important; /* Verde de sucesso */
-    color: white !important;
-    border-color: #2e7d32 !important;
-}
-
-.wrong {
-    background-color: #e53935 !important; /* Vermelho de erro */
-    color: white !important;
-    border-color: #c62828 !important;
-}
-/* --- ESTILO PARA ELEMENTOS PADRÃO DO SITE --- */
+.correct { background-color: #43a047 !important; color: white !important; }
+.wrong { background-color: #e53935 !important; color: white !important; }
 
 /* Rodapé (Footer) */
 footer {
     width: 100%;
-    background-color: #1a237e; /* Azul Índigo Escuro, mesma cor do header */
+    background-color: #1a237e; 
     color: #ffffff;
     padding: 20px 0;
-    margin-top: auto; /* Garante que o rodapé fique no final da página */
+    margin-top: auto; 
     box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
     font-size: 0.9em;
 }
-
 footer p {
     margin: 5px 0;
-}
-
-/* Melhorando a aparência de todos os links no rodapé e menu */
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s;
-}
-
-/* Tirando a linha de baixo do texto "Plataforma de Estudos..." no header */
-header p {
-    color: #bbdefb;
-    font-weight: 300;
 }
