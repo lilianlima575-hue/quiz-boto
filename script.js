@@ -65,9 +65,7 @@ function loadQuestion() {
         button.id = 'option-' + index; 
         
         // Define que ao clicar, a função checkAnswer será chamada
-        <button id="option0" onclick="checkAnswer(0)"></button>
-        <button id="option1" onclick="checkAnswer(1)"></button>
-    </div>
+        button.onclick = () => checkAnswer(index, currentQuestion.answer);
         
         optionsContainer.appendChild(button);
     });
