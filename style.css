@@ -80,7 +80,7 @@ header h1 {
     transform: translateY(-2px); 
 }
 
-/* Feedback de Cores */
+/* Feedback de Cores (Funcionalidade) */
 .correct {
     background-color: #27ae60 !important; 
     color: white !important;
@@ -92,4 +92,4 @@ header h1 {
     color: white !important;
     border-color: #c0392b !important;
 }
-/* O estilo .explanation-text foi removido para manter o minimalismo */
+/* Estilo para explicação removido para manter a simplicidade */
