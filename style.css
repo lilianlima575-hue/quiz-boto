@@ -1,102 +1,154 @@
-/* Importando uma fonte moderna e limpa do Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+/* ==================================== */
+/* 1. IMPORTAÇÃO E RESET BÁSICO (Topzeira) */
+/* ==================================== */
 
-/* Reset Básico e Fundo Temático */
+/* Importando a fonte Poppins e um toque de elegância com Dosis */
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #e9f5f5; /* Fundo suave, cor de água clara */
-    color: #333;
+    background-color: #f0f8ff; /* Azul Céu Suave para um toque aquático */
+    color: #1a1a2e; /* Azul Marinho Escuro para legibilidade */
     margin: 0;
-    padding: 20px;
+    padding: 0;
     line-height: 1.6;
     text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Estilo do Cabeçalho */
+/* ==================================== */
+/* 2. CABEÇALHO (Themed Header) */
+/* ==================================== */
+
 header {
-    background-color: #2b7a78; /* Azul-água escuro/verde marinho */
+    width: 100%;
+    background-color: #1e8449; /* Verde Amazônia */
+    background-image: linear-gradient(135deg, #1abc9c 0%, #1e8449 100%); /* Gradiente vibrante */
     color: #ffffff;
-    padding: 30px 20px;
-    margin-bottom: 20px;
-    border-radius: 0 0 15px 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-family: 'Dosis', sans-serif;
+    font-size: 3em;
     font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
 }
 
-/* Container do Quiz (o 'card' principal) */
+header p {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* ==================================== */
+/* 3. CONTAINER PRINCIPAL (Card Design) */
+/* ==================================== */
+
 .quiz-container {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 30px;
-    background-color: #ffffff; 
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Sombra mais forte para destaque */
+    max-width: 650px;
+    width: 90%;
+    margin-top: 50px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 5px rgba(30, 132, 73, 0.1); /* Sombra e Borda de Destaque */
+    border: 1px solid #ddd;
+    animation: fadeIn 1s ease-out; /* Animação de entrada */
 }
 
-/* Estilo da Pergunta */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================================== */
+/* 4. PERGUNTA E BOTÕES */
+/* ==================================== */
+
 .question {
-    font-size: 1.5em;
-    font-weight: 600;
-    color: #17252a;
-    margin-bottom: 30px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.7em;
+    font-weight: 700;
+    color: #1e8449; /* Cor da Amazônia */
+    margin-bottom: 35px;
+    line-height: 1.4;
 }
 
-/* Estilo das Opções (Botões) */
 .options {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaço entre os botões */
-    margin-bottom: 20px;
+    gap: 15px;
 }
 
-.option-button, #start-button {
-    background-color: #f7f7f7;
-    color: #333;
-    border: 2px solid #3aafa9;
-    padding: 15px;
-    border-radius: 8px;
+.option-button, .quiz-container button {
+    background-color: #ffffff;
+    color: #1a1a2e;
+    border: 2px solid #a9dfbf; /* Borda suave */
+    padding: 15px 20px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1.1em;
-    font-weight: 500;
-    transition: all 0.3s;
-    text-align: left; /* Alinha o texto das opções à esquerda */
+    font-weight: 600;
+    transition: all 0.3s ease; /* Transição suave */
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.option-button:hover, #start-button:hover {
-    background-color: #e8f9f8;
-    transform: translateY(-2px);
+.option-button:hover, .quiz-container button:hover {
+    background-color: #e0f8f3; /* Fundo suave ao passar o mouse */
+    color: #1e8449;
+    border-color: #1e8449;
+    transform: translateY(-3px); /* Efeito 3D sutil */
 }
 
-/* Estilo da mensagem de resultado */
+/* ==================================== */
+/* 5. FEEDBACK E RESULTADOS */
+/* ==================================== */
+
 #result {
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: 700;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    animation: slideUp 0.5s ease-out;
 }
 
-/* Cores de feedback (usadas no JavaScript) */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos de feedback (Cores Temáticas) */
 .correct {
-    background-color: #3aafa9 !important; 
+    background-color: #27ae60 !important; /* Verde Sucesso */
     color: white !important;
-    border-color: #2b7a78 !important;
+    border-color: #1e8449 !important;
+    transform: scale(1.03); /* Leve zoom para destacar */
 }
 
 .wrong {
-    background-color: #fe6860 !important; 
+    background-color: #e74c3c !important; /* Vermelho Erro */
     color: white !important;
-    border-color: #cc504a !important;
+    border-color: #c0392b !important;
 }
 
-/* Estilo para o botão de Reiniciar */
+/* Estilo do botão de Reiniciar (Destaque) */
 .quiz-container button[onclick="restartQuiz()"] {
-    margin-top: 20px;
-    background-color: #fe6860;
+    background-color: #f39c12; /* Laranja/Ouro para Recompensa/Ação */
     color: white;
-    border: none;
+    border: 2px solid #e67e22;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+}
+
+.quiz-container button[onclick="restartQuiz()"]:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
 }
