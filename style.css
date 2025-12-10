@@ -1,20 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
-/* --- VARIÁVEIS DE CORES --- */
+/* --- VARIÁVEIS DE CORES INVERTIDAS --- */
 :root {
-    --color-primary: #1A237E; /* Azul Índigo Escuro (Cabeçalho/Rodapé) */
-    --color-secondary: #3949AB; /* Azul Médio (Navegação) */
-    --color-background: #F0F4F7; /* Fundo Leve */
-    --color-card: #FFFFFF; /* Fundo do Card */
-    --color-accent: #64B5F6; /* Azul Claro (Destaque/Hover) */
-    --color-text: #1a1a2e;
+    --color-primary: #1A237E;      /* Azul Índigo Escuro (Cor principal/FUNDO DO SITE) */
+    --color-secondary: #3949AB;    /* Azul Médio (Destaque do menu) */
+    --color-background: var(--color-primary); /* Fundo GERAL agora é o azul escuro */
+    --color-card: #FFFFFF;         /* Fundo do Card (branco/claro para contraste) */
+    --color-text-dark: #1a1a2e;    /* Texto para fundos claros */
+    --color-text-light: #f0f4f7;   /* Texto para fundos escuros */
+    --color-accent: #64B5F6;       /* Azul Claro (Destaque/Hover) */
+    --color-link: #BBDEFB;         /* Links em fundos escuros */
 }
 
-/* --- ESTILO GERAL --- */
+/* --- ESTILO GERAL (Cor de Fundo Escura) --- */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--color-background);
-    color: var(--color-text);
+    background-color: var(--color-background); /* Aplica o azul escuro no fundo */
+    color: var(--color-text-light); /* Texto principal agora é claro */
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -27,21 +29,21 @@ body {
 /* Cabeçalho Compacto e Fino */
 header {
     width: 100%;
-    background-color: var(--color-primary);
+    background-color: #0d1252; /* Um tom de azul ainda mais escuro para o topo */
     color: var(--color-card);
-    padding: 12px 20px; /* Mais fino */
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 12px 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Sombra mais evidente no fundo escuro */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky; /* Fica fixo no topo ao rolar */
+    position: sticky;
     top: 0;
     z-index: 20;
 }
 
 header .logo {
     font-family: 'Dosis', sans-serif;
-    font-size: 1.6em; /* Título pequeno, mas visível */
+    font-size: 1.6em;
     font-weight: 700;
     margin: 0;
     color: var(--color-card);
@@ -54,7 +56,7 @@ header .logo {
 nav {
     width: 100%;
     background-color: var(--color-secondary); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 10;
 }
 
@@ -84,7 +86,7 @@ nav {
     display: none; 
     cursor: pointer;
     padding: 5px;
-    user-select: none; /* Não selecionável */
+    user-select: none;
 }
 .bar {
     display: block;
@@ -103,11 +105,11 @@ nav {
     nav {
         display: none; 
         position: absolute;
-        top: 52px; /* Altura do header + 1px */
+        top: 52px;
         left: 0;
         z-index: 15;
         background-color: var(--color-secondary);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     }
     nav.active {
         display: block; 
@@ -118,10 +120,7 @@ nav {
     }
     .nav-links li {
         width: 100%;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .nav-links li:last-child {
-        border-bottom: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
     .nav-links li a {
         padding: 15px 25px;
@@ -130,17 +129,17 @@ nav {
 }
 
 
-/* --- ESTILO DOS CARDS E CONTEÚDO (ASPECTO ORIGINAL) --- */
+/* --- ESTILO DOS CARDS E CONTEÚDO (DESTAQUE CLARO NO FUNDO ESCURO) --- */
 
-.game-menu, .quiz-container, .study-container {
+.game-menu, .quiz-container, .study-container, .presentation-container {
     max-width: 800px;
     width: 90%;
     margin: 60px auto;
     padding: 40px;
-    background-color: var(--color-card);
+    background-color: var(--color-card); /* Mantém o card branco para máximo contraste */
+    color: var(--color-text-dark); /* Texto DENTRO do card é escuro */
     border-radius: 15px;
-    /* Sombra mais suave e moderna (minimalista) */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.1); 
     text-align: left;
 }
 
@@ -151,86 +150,22 @@ nav {
     text-align: center;
 }
 
-.menu-title, .study-title {
+.menu-title, .study-title, .presentation-title {
     font-family: 'Dosis', sans-serif;
     font-size: 2em; 
     color: var(--color-primary); 
     margin-bottom: 30px;
     text-align: center;
-    border-bottom: 3px solid var(--color-background); /* Linha mais sutil */
+    border-bottom: 3px solid #eee; /* Linha clara de separação */
     padding-bottom: 15px;
 }
 
-/* Botões de Módulo/Links (Onde a Originalidade Acontece) */
+/* Botões de Módulo/Links (Dentro do Card Claro) */
 .game-link, .option-button, #start-quiz-btn, #start-study-btn {
     display: block;
     width: 100%;
-    background-color: var(--color-background); /* Fundo muito claro/sutil */
+    background-color: #f0f4f7; /* Fundo muito claro/sutil */
     color: var(--color-primary);
     padding: 15px 20px;
     margin-bottom: 15px;
-    border-radius: 10px; /* Borda mais arredondada */
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: 600;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-    text-align: left;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra inicial suave */
-    cursor: pointer;
-}
-
-.game-link:hover, .option-button:hover, #start-quiz-btn:hover, #start-study-btn:hover {
-    background-color: var(--color-accent); /* Azul claro no hover */
-    color: var(--color-card);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Sombra mais evidente no hover */
-}
-
-.game-link small {
-    color: rgba(26, 35, 46, 0.8); /* Cor mais escura para descrição */
-    transition: color 0.3s;
-}
-.game-link:hover small {
-    color: rgba(255, 255, 255, 0.9); /* Descrição fica branca no hover */
-}
-
-
-/* Estilo de Leitura/Study Content */
-.study-content { text-align: justify; }
-.study-content h3 { 
-    font-family: 'Dosis', sans-serif;
-    color: var(--color-primary);
-    border-left: 6px solid var(--color-accent);
-    padding-left: 15px;
-    font-size: 1.5em;
-    margin-top: 35px;
-}
-
-/* Placar de Jogo */
-#game-status {
-    padding: 12px 15px;
-    border-radius: 8px;
-    background-color: var(--color-accent);
-    color: var(--color-card);
-    font-weight: 700;
-    font-size: 1.1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-/* Feedback Cores */
-.correct { background-color: #4CAF50 !important; color: white !important; }
-.wrong { background-color: #F44336 !important; color: white !important; }
-
-/* Rodapé Profissional */
-footer {
-    width: 100%;
-    background-color: var(--color-primary); 
-    color: rgba(255, 255, 255, 0.8); /* Branco suave */
-    padding: 25px 0;
-    margin-top: auto; 
-    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
-    font-size: 0.95em;
-    text-align: center;
-}
+    border-radius: 10px
